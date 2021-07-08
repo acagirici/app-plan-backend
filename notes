@@ -1,0 +1,7 @@
+CollegeApplication
+    has_many :plans
+    Attributes - college_name, due_date, app_type (transfer, first-year), level (undergraduate, graduate, apprenticeship, community college)  
+
+Plan
+    belongs_to :account
+    Attributes - application_id - integer, app_fee - float, visit_date - datetime, visit_impressions - string, essay_topic - string, rating - integer
