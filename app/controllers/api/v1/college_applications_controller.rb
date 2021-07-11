@@ -1,5 +1,5 @@
 class Api::V1::CollegeApplicationsController < ApplicationController
-    
+
     def index
         college_applications = CollegeApplication.all
         render json: college_applications
@@ -10,7 +10,7 @@ class Api::V1::CollegeApplicationsController < ApplicationController
         if college_application.save
             render json: college_application, status: 200
         else
-            render :json {errors: college_application.errors.full_messages}, status: 404
+            render json: {errors: college_application.errors.full_messages}, status: 404
         end
     end
 
@@ -27,7 +27,7 @@ class Api::V1::CollegeApplicationsController < ApplicationController
     private
 
     def college_application_params
-        params.require(:college_application).require(:name, :app_type, :level)
+        params.require(:college_application).permit(:name, :app_type, :level)
     end
 
 end

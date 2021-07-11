@@ -16,7 +16,7 @@ class Api::V1::PlansController < ApplicationController
         if plan.save
             render json: plan, status: 200
         else
-            render :json {errors: plan.errors.full_messages}, status: 404
+            render json: {errors: plan.errors.full_messages}, status: 404
         end
     end
     
@@ -28,7 +28,7 @@ class Api::V1::PlansController < ApplicationController
     private
 
     def plan_params
-        params.require(:plan).require(:college_name, :app_deadline, :app_fee, :visit_date, :visit_impressions, :essay_topic, :rating, :college_application_id)
+        params.require(:plan).permit(:college_name, :app_deadline, :app_fee, :visit_date, :visit_impressions, :essay_topic, :rating, :college_application_id)
     end
 
     def set_application
