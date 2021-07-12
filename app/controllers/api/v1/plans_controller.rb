@@ -14,7 +14,7 @@ class Api::V1::PlansController < ApplicationController
     def create
         plan = @college_application.plans.new(plan_params)
         if plan.save
-            render json: plan, status: 200
+            render json: @college_application, status: 200
         else
             render json: {errors: plan.errors.full_messages}, status: 404
         end
