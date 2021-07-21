@@ -19,11 +19,6 @@ class Api::V1::CollegeApplicationsController < ApplicationController
         render json: college_application
     end
 
-    def destroy
-        college_application = CollegeApplication.find(params[:id])
-        college_application.destroy
-    end
-
     private
 
     def college_application_params

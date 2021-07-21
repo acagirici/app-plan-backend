@@ -21,8 +21,10 @@ class Api::V1::PlansController < ApplicationController
     end
     
     def destroy
-        plan = Plan.find(params[:id])
+        plan = Plan.find(params['id'])
+        college_application = CollegeApplication.find(plan.college_application_id)
         plan.destroy
+        render json: college_application
     end
 
     private
